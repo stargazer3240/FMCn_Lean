@@ -9,16 +9,19 @@ inductive Nat where
 open Nat
 
 def fromNat : Nat -> String
-  | O   => "O"
-  | S n => "S" ++ fromNat n
+  | O   => "0"
+  | S O => "S 0"
+  | S n => "S (" ++ fromNat n ++ ")"
 
-instance : Repr Nat where -- alternativa possivel, nao que vai ser.
+instance : Repr Nat where
   reprPrec
     | n, _  => Std.Format.text (fromNat n)
 
 -- Texto legal aqui ou isso vai dps...
-#check S  -- Qual o tipo do S?
-#eval S O -- Quem eh S O ?
+#check S      -- Qual o tipo do S?
+#eval S (S O) -- Quem eh S (S O) ?
+-- Cuidado, os parenteses sao obrigatorios
+--        Pq?
 
 ---------------------------------------------Defs---------------------------------------------
 
@@ -35,7 +38,7 @@ def add : Nat → Nat → Nat
 
 
                      /- Agora vamos definir algumas funções!
-                        Presta atencao no tipo!
+                        Presta atencao de colocar o tipo certo!
                           Obs: Se quiser escrever `→` é só digitar \to -/
 
 
