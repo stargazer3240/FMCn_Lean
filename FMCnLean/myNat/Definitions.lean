@@ -1,52 +1,74 @@
-/-
-Vamos definir um tipo que age como os Naturais que
-conheço desde a infância. Neles eu tenho o O que é um
-natural e a função S que recebe um natural para virar
-um natural. (Nada mais)
--/
-inductive myNat where
-  | O : myNat
-  | S : myNat → myNat
-  -- Se quiser escrever `→` é só digitar \to
-deriving Repr
+namespace Lv1
 
---Agora vamos definir algumas funções! Não se esqueça de
---colocar o tipo certo!
+-- Nao mexas neste inicio :P
 
-open myNat -- Fica mais fácil escrever O e S assim!
-#check myNat.S -- Qual o tipo do S?
+inductive Nat where
+  | O : Nat
+  | S : Nat → Nat
 
+open Nat
 
-/-
-A adição(+) eu vou dar de graça, tente usar esse
-presente para fazer mais funções!
--/
-def add : myNat → myNat → myNat
+def fromNat : Nat -> String
+  | O   => "O"
+  | S n => "S" ++ fromNat n
+
+instance : Repr Nat where
+  reprPrec
+    | n, _  => Std.Format.text (fromNat n)
+
+-- Texto legal aqui ou isso vai dps...
+#check S  -- Qual o tipo do S?
+#eval S O -- Quem eh S O ?
+
+---------------------------------------------Defs---------------------------------------------
+
+-- A adição(+) eu vou dar de graça
+-- Use esse presente para fazer mais funções!
+
+def add : Nat → Nat → Nat
   | n, O => n
   | n, S m => S (add n m)
+
+
+-- Vamos conferir ..
 #eval add (S (S O)) (S O)
--- Uma forma de ver se sua função está funcionando como deveria ;)
+
+
+                     /- Agora vamos definir algumas funções!
+                        Presta atencao no tipo!
+                          Obs: Se quiser escrever `→` é só digitar \to -/
+
 
 -- Multiplicação (*)
 def mul : α → α
   | _ => sorry
 
+-- alguns evals prontos entre as defs..
+
 -- Exponenciação (^)
 def exp : α → α
   | _ => sorry
 
--- Fibonacci, em que fib x = fib (x-1) + fib (x-2) (♡)
+-- Fibonacci
 def fib : α → α
   | _ => sorry
 
--- Factorial, lembre-se de n! = n*(n-1)*...*1*0!
+-- Factorial
 def fact : α → α
   | _ => sorry
 
--- Uma função que me diz qual o mínimo entre dois naturais
+-- Min binario
 def min : α → α
   | _ => sorry
 
--- Uma função que me diz qual o máximo entre dois naturais
+-- Max binario
 def max : α → α
   | _ => sorry
+
+-- Pergunta qualquer duvida sobre as defs
+
+------------------------------------------Demons---------------------------------------------
+
+ .
+ .
+ .
