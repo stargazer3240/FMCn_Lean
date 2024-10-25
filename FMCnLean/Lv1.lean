@@ -12,7 +12,7 @@ def fromNat : Nat -> String
   | O   => "O"
   | S n => "S" ++ fromNat n
 
-instance : Repr Nat where
+instance : Repr Nat where -- alternativa possivel, nao que vai ser.
   reprPrec
     | n, _  => Std.Format.text (fromNat n)
 
@@ -26,7 +26,7 @@ instance : Repr Nat where
 -- Use esse presente para fazer mais funções!
 
 def add : Nat → Nat → Nat
-  | n, O => n
+  | n, O   => n
   | n, S m => S (add n m)
 
 
@@ -65,10 +65,28 @@ def min : α → α
 def max : α → α
   | _ => sorry
 
--- Pergunta qualquer duvida sobre as defs
+                      /- Pergunta qualquer duvida sobre as defs -/
 
-------------------------------------------Demons---------------------------------------------
+-----------------------------------------Demons---------------------------------------------
 
- .
- .
- .
+theorem add_zero :
+  ∀ (n : myNat), add n O = n :=
+by
+  sorry
+  -- Escreva aqui sua demonstração
+  -- Identação é importante :)
+
+theorem mul_one :
+  ∀ (n : myNat), mul n (S O) = n :=
+by
+  sorry
+
+theorem exp_one :
+  ∀ (n : myNat), exp n (S O) = n :=
+by
+  sorry
+
+theorem max_zero :
+  ∀ (n : myNat), max n O = n :=
+by
+  sorry

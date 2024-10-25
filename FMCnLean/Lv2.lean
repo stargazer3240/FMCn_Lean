@@ -1,6 +1,12 @@
+namespace Lv2
+--import FMCnLean.Lv1
+-- algo precisa ser feito pra rodar :PP
+
+
+-- Definas tu!
+
 inductive myBool where
-  | True : myBool
-  | False : myBool
+  | sorry
 deriving Repr
 
 def band : α → α
@@ -8,5 +14,3 @@ def band : α → α
 
 def bor : α → α
   | _ => sorry
-
-
