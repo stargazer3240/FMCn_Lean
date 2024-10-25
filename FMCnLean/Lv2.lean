@@ -8,6 +8,7 @@ open Lv1.Nat
 namespace Lv2
 
 def Nat := Lv1.Nat
+
 ---------------------------------------------Defs---------------------------------------------
 
 inductive Bool where
