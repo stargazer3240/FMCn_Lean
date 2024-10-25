@@ -16,52 +16,82 @@ deriving Repr
 
 open Bool
 
-
 -- Logical and         (∧)
-def land : Bool → Bool → Bool
-  | _, _ => True
+def land : α → α
+  | _ => sorry
+
+#eval land True True
+#eval land True False
+#eval land False True
+#eval land False False
 
 -- Logical or          (∨)
 def lor : α → α
   | _ => sorry
 
+#eval lor True True
+#eval lor True False
+#eval lor False True
+#eval lor False False
+
 -- Logical implies     (→)
 def limplies : α → α
   | _ => sorry
+
+#eval limplies False True
+#eval limplies True False
 
 -- Logical impliedBy   (←)
 def limplied : α → α
   | _ => sorry
 
+#eval limplied False True
+#eval limplied True False
+
 -- Logical not         (¬)
-def lnot : α → α
+def lneg : α → α
   | _ => sorry
+
+#eval lneg True
+#eval lneg False
 
 -- Logical NAND
 def lnand : α → α
   | _ => sorry
 
+#eval lnand True True
+#eval lnand False False
+#eval lnand True False
+
 -- Logical NOR
-def lneg : α → α
+def lnor : α → α
   | _ => sorry
+
+#eval lnor True False
+#eval lnor True True
 
 -- Logical Exclusive-or
 def lxou : α → α
   | _ => sorry
 
--- Cuidado!
--- Use "Lv1.Nat" ao inves de "Nat"
+#eval lxou True  True
+#eval lxou False False
+#eval lxou True  False
 
 --  Par
 def isEven : α → α
   | _ => sorry
 
+#eval isEven O
+#eval isEven (S O)
+#eval isEven (S (S Ordering))
+
 -- Impar
 def isOdd : α → α
   | _ => sorry
 
-#eval isLt (S O) (S (S O))
-#eval isLt (S (S (S O))) (S O)
+#eval isOdd (S (S O))
+#eval isOdd (S (S (S O)))
 
 -- (<)
 def isLt : α → α
