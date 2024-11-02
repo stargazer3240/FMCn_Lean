@@ -35,16 +35,18 @@ def add : Nat → Nat → Nat
                           Obs: Se quiser escrever `→` é só digitar \to -/
 
 -- Multiplicação (*)
-def mul : α → α
-  | _ => sorry
+def mul : Nat →  Nat →  Nat
+  | _, O => O
+  | n, S m => add (mul n m) n
 
 #eval mul (S (S O)) (O)
 #eval mul (S O) (S (S (S O)))
 #eval mul (S (S (S O))) (S (S O))
 
 -- Exponenciação (^)
-def exp : α → α
-  | _ => sorry
+def exp : Nat → Nat → Nat
+  | _, O => S O
+  | n, S m => mul (exp n m) n
 
 #eval exp (S (S (S O))) (S O)
 #eval exp (S (S (S (S O)))) O
@@ -52,8 +54,9 @@ def exp : α → α
 #eval exp (S O) (S (S (S (S O))))
 
 -- Fibonacci
-def fib : α → α
-  | _ => sorry
+def fib : Nat → Nat
+  | S (S n) => add (fib (S n)) (fib n)
+  | n => n
 
 #eval fib O
 #eval fib (S O)
@@ -63,8 +66,9 @@ def fib : α → α
 #eval fib (S (S (S (S (S O)))))
 
 -- Factorial
-def fact : α → α
-  | _ => sorry
+def fact : Nat → Nat
+  | S n => mul (S n) (fact n)
+  | _ => S O
 
 #eval fact O
 #eval fact (S O)
@@ -74,15 +78,19 @@ def fact : α → α
 #eval fact (S (S (S (S (S O)))))
 
 -- Min binario
-def min : α → α
-  | _ => sorry
+def min : Nat → Nat → Nat
+  | S n, S m => S (min n m)
+  | _, O => O
+  | O, _ => O
 
 #eval min (S (S O)) O
 #eval min (S O) (S (S O))
 
 -- Max binario
-def max : α → α
-  | _ => sorry
+def max : Nat → Nat → Nat
+  | S n, S m => S (max n m)
+  | n, O => n
+  | O, n => n
 
 #eval max (S (S O)) O
 #eval max (S O) (S (S O))
